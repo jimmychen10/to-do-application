@@ -1,19 +1,28 @@
-import React from "react"
-import Item1 from "./components/Item1"
-import Item2 from "./components/Item2"
-import Item3 from "./components/Item3"
-import Item4 from "./components/Item4"
+import React, {Component} from "react"
+import Item from "./components/Item"
+
+import todosData from "./data/todosData.js"
 import "./App.css"
 
-function App (){
-  return(
-    <div className="todo-list">
-      <Item1/>
-      <Item2/>
-      <Item3/>
-      <Item4/>
-    </div>
-  )
+
+class App extends Component {
+  constructor() {
+      super()
+      this.state = {
+          todos: todosData
+      }
+  }
+  
+  render() {
+      const todoItems = this.state.todos.map(item => <Item key={item.id} item={item}/>)
+      
+      return (
+          <div className="todo-list">
+              {todoItems}
+          </div>
+      )    
+  }
 }
 
 export default App
+
