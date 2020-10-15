@@ -20,7 +20,10 @@ class App extends Component {
         this.setState(prevState =>{
             const updatedItems = prevState.items.map(item =>{
                 if(item.id === id){
-                    item.completed = !item.completed
+                    return{
+                        ...item, // object spread notation takes all the information form todos and 
+                        completed: !item.completed
+                    }
                 }
                 return item
             }
